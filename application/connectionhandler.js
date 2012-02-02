@@ -8,7 +8,6 @@ exports.distribute = function (type, object)
 
 exports.register_message = function (socket, message) 
 {
-	var address = socket.handshake.address;
-	
-	global.connection_handler.distribute('message', { nickname: address.address + ':' + address.port, message: message });
+	var nickname = socket._data.nickname;
+	global.connection_handler.distribute('message', { nickname: nickname, message: message });
 }

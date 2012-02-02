@@ -1,13 +1,29 @@
-var socket;
+var socket, nickname;
 
 $(function() {
+	$('#modal_content').modal('show');
+	
+	$('#nick_button').click(function() {
+		if ($('#nickname').val().length > 0)
+		{
+			$('#modal_content').modal('hide');
+			
+			nickname = $('#nickname').val();
+			
+			init_chat();
+		}
+	});
+});
+
+function init_chat()
+{
 	// connect
 	socket = io.connect('http://' + window.location.host);
 	add_rule_to_chat(' *** Verbinding maken.. ');
 	
 	register_binds();
 	register_key_event();
-});
+}
 
 function add_rule_to_chat(message)
 {
@@ -18,6 +34,7 @@ function register_binds()
 {
 	socket.on('connect', function () {
 		add_rule_to_chat(' *** Verbonden! ');
+		socket.emit('set_nickname', { nickname: nickname });
 	});
 	
 	socket.on('disconnect', function (data) {

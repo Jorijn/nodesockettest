@@ -10,3 +10,16 @@ div.row
 				
 		form.form-search
 			input(type='text').search-query.span12#input
+			
+div#modal_content.modal.hide.fade
+	div.modal-header
+		a.close(data-dismiss='modal') ×
+		h3 Hallo daar!
+		
+	div.modal-body
+		h4 Anders geef je jezelf even een naam dan.
+		br
+		input(type='text', name='nickname')#nickname
+		
+	div.modal-footer
+		a.btn.btn-primary#nick_button Verbinden

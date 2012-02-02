@@ -41,4 +41,3 @@ global.connection_events = require('./application/events');
 
 // events
 io.sockets.on('connection', global.connection_events.on_connect);
-io.sockets.on('message', global.connection_events.on_message);
