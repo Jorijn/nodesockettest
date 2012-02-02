@@ -1,0 +1,25 @@
+!!! 5
+html
+	head
+		title Chat Test
+		link(rel='stylesheet', href='http://twitter.github.com/bootstrap/assets/css/bootstrap.css')
+		link(rel='stylesheet', href='http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css')
+		link(rel='stylesheet', href='stylesheets/style.css')
+		
+		script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+		script(type='text/javascript', src='/socket.io/socket.io.js')
+		script(type='text/javascript', src='javascripts/script.js')
+
+	body
+		header
+			nav
+				div.navbar.navbar-fixed-top
+					div.navbar-inner
+						div.container
+							a.brand Node JS test
+							ul.nav
+								li.active
+									a(href='/') Home
+						
+						
+		div.container!= body
