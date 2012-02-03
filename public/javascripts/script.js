@@ -35,20 +35,28 @@ function register_binds()
 	socket.on('connect', function () {
 		add_rule_to_chat(' *** Verbonden! ');
 		socket.emit('set_nickname', { nickname: nickname });
+		scroll_to_bottom();
 	});
 	
 	socket.on('disconnect', function (data) {
-		add_rule_to_chat(' *** Verbinding verloren :-(');
+		add_rule_to_chat('<span class="typ"> *** Verbinding verloren :-(</span>');
+		scroll_to_bottom();
 	});
 	
 	socket.on('news', function (data) {
-		add_rule_to_chat(' *** ' + data.message);
+		add_rule_to_chat('<span class="typ"> *** ' + data.message + '</span>');
+		scroll_to_bottom();
 	});
 	
 	socket.on('message', function (data) {
-		add_rule_to_chat('&lt;' + data.nickname + '&gt; ' + data.message);
-		$('pre').scrollTop($('pre').height() * 10);
+		add_rule_to_chat('<span class="kwd">&lt;' + data.nickname + '&gt;</span> ' + data.message);
+		scroll_to_bottom();
 	});
+}
+
+function scroll_to_bottom()
+{
+	$('pre').scrollTop($('pre ul').height());
 }
 
 function register_key_event()

@@ -9,5 +9,5 @@ exports.distribute = function (type, object)
 exports.register_message = function (socket, message) 
 {
 	var nickname = socket._data.nickname;
-	global.connection_handler.distribute('message', { nickname: nickname, message: message });
+	global.connection_handler.distribute('message', { nickname: nickname, message: require('jade').runtime.escape(message) });
 }
